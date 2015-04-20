@@ -49,7 +49,7 @@ public abstract class FakeSearchAdapter<T extends SearchItem> extends BaseAdapte
     return items.size();
   }
 
-  @Override public Object getItem(int position) {
+  @Override public T getItem(int position) {
     return items.get(position);
   }
 

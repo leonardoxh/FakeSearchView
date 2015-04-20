@@ -57,7 +57,7 @@ public class MainActivity extends Fragment implements FakeSearchView.OnSearchLis
 This library is also available at maven central using gradle:
 ```groovy
 dependencies {
-  compile 'com.github.leonardoxh:fake-search-view:0.1'
+  compile 'com.github.leonardoxh:fake-search-view:0.2'
 }
 ```
 
