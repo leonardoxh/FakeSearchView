@@ -12,7 +12,6 @@ It's usage is very very simple, you can use it directly or use a custom adapter 
 First, create the menu options
 ```xml
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
   xmlns:app="http://schemas.android.com/apk/res-auto">
 
   <item
@@ -57,7 +56,7 @@ public class MainActivity extends Fragment implements FakeSearchView.OnSearchLis
 This library is also available at maven central using gradle:
 ```groovy
 dependencies {
-  compile 'com.github.leonardoxh:fake-search-view:0.1'
+  compile 'com.github.leonardoxh:fake-search-view:0.2'
 }
 ```
 

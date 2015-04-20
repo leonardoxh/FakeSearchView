@@ -16,6 +16,7 @@
 package com.github.leonardoxh.fakesearchview.sample;
 
 import com.github.leonardoxh.fakesearchview.SearchItem;
+
 import java.util.Locale;
 
 public class Car implements SearchItem {

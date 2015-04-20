@@ -46,7 +46,7 @@ public class CarAdapter extends FakeSearchAdapter<Car> {
     } else {
       viewHolder = (ViewHolder) convertView.getTag();
     }
-    viewHolder.carModel.setText(((Car)getItem(position)).getModel());
+    viewHolder.carModel.setText(getItem(position).getModel());
     return convertView;
   }
 
