@@ -5,7 +5,7 @@ So I think the native Android SearchView it's a good option when perform a searc
 
 On my recent projects I use this class many and many times, so it's time to become a library.
 
-It's usage is very very simple, you can use it directly or use a custom adapter like the snipet below:
+It's usage is very very simple, you can use it directly or use a custom adapter like the snipet below, or checkout the sample in this project:
 
 First, create the menu options
 ```xml
@@ -57,4 +57,22 @@ This library is also available at maven central using gradle:
 dependencies {
   compile 'com.github.leonardoxh:fake-search-view:0.1'
 }
+```
+
+Licence:
+==========
+```
+Copyright 2015 Leonardo Rossetto
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
