@@ -5,7 +5,7 @@
 
   <item
     android:id="@+id/search_cars"
-    android:title="@string/action_settings"
+    android:title="@string/action_search"
     android:icon="@mipmap/search"
     app:showAsAction="ifRoom|collapseActionView"
     app:actionViewClass="com.gihub.leonardoxh.fakesearchview.FakeSearchView"/>

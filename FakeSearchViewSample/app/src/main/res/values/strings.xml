@@ -2,6 +2,6 @@
 
   <string name="app_name" translatable="false">FakeSearchViewSample</string>
 
-  <string name="action_settings">Search</string>
+  <string name="action_search">Search</string>
 
 </resources>
