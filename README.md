@@ -1,0 +1,60 @@
+# FakeSearchView
+Search made easy!
+
+So I think the native Android SearchView it's a good option when perform a search, but it's not customizable and it's so burocratic!
+
+On my recent projects I use this class many and many times, so it's time to become a library.
+
+It's usage is very very simple, you can use it directly or use a custom adapter like the snipet below:
+
+First, create the menu options
+```xml
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/fake_search"
+    android:title="@string/find"
+    android:icon="@drawable/ic_action_search"
+    app:showAsAction="ifRoom|collapseActionView"
+    app:actionViewClass="com.github.leonardoxh.fakesearchview.FakeSearchView"/>
+
+</menu>
+```
+
+After this you will need use this menu in your activity or fragment and set the search listener like this:
+```java
+public class MainActivity extends Fragment implements FakeSearchView.OnSearchListener {
+
+  private ListView listView;
+
+  /* Another methods */
+
+  @Override public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    inflater.inflate(R.menu.menu_devices, menu);
+    MenuItem menuItem = menu.findItem(R.id.fake_search);
+    FakeSearchView fakeSearchView = (FakeSearchView) MenuItemCompat.getActionView(menuItem);
+    fakeSearchView.setOnSearchListener(this);
+  }
+
+  @Override public void onSearch(@NotNull CharSequence constraint) {
+    //The constraint variable here change every time user input data
+    ((Filterable)listView.getAdapter()).getFilter().filter(constraint);
+    /* Any adapter that implements a Filterable interface, or just extends the built in FakeSearchAdapter
+       and implements the searchitem on your model to a custom filter logic */
+  }
+
+  @Override public void onSearchHint(@NotNull CharSequence constraint) {
+    //This is received when the user click in the search button on the keyboard
+  }
+
+}
+```
+
+This library is also available at maven central using gradle:
+```groovy
+dependencies {
+  compile 'com.github.leonardoxh:fake-search-view:0.1'
+}
+```
