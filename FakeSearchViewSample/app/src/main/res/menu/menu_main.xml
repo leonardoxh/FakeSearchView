@@ -6,6 +6,6 @@
     android:title="@string/action_search"
     android:icon="@mipmap/search"
     app:showAsAction="ifRoom|collapseActionView"
-    app:actionViewClass="com.gihub.leonardoxh.fakesearchview.FakeSearchView"/>
+    app:actionViewClass="com.github.leonardoxh.fakesearchview.FakeSearchView"/>
 
 </menu>
