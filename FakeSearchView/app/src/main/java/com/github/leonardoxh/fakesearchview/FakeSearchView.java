@@ -76,6 +76,11 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     this.searchListener = searchListener;
   }
 
+  /**
+   * Register this interface for receive clear button click events
+   * @param clearSearchListener the listener
+   * @see OnClearSearchListener
+   */
   public void setClearSearchListener(OnClearSearchListener clearSearchListener) {
     this.clearSearchListener = clearSearchListener;
   }
@@ -90,7 +95,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   /**
    * Inflate the layout to this FrameLayout wrapper
-   * @param context
+   * @param context for inflate views
    */
   private void init(Context context) {
     View view = LayoutInflater.from(context).inflate(R.layout.fake_search_view, this, true);
@@ -101,25 +106,25 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     clear.setOnClickListener(this);
   }
 
-  @Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
+  @Override public void beforeTextChanged(CharSequence constraint, int start, int count, int after) { }
 
-  @Override public void onTextChanged(CharSequence text, int i, int i2, int i3) {
+  @Override public void onTextChanged(CharSequence constraint, int start, int count, int after) {
     if (searchListener != null) {
-      searchListener.onSearch(this, text);
-    } else {
-      Log.w(getClass().getName(), "SearchListener == null");
+      searchListener.onSearch(this, constraint);
+      return;
     }
+    Log.w(getClass().getName(), "SearchListener == null");
   }
 
   @Override public void afterTextChanged(Editable editable) { }
 
-  @Override public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+  @Override public boolean onEditorAction(TextView textView, int eventId, KeyEvent keyEvent) {
     if (searchListener != null) {
       searchListener.onSearchHint(this, textView.getText());
-    } else {
-      Log.w(getClass().getName(), "SearchListener == null");
+      return true;
     }
-    return true;
+    Log.w(getClass().getName(), "SearchListener == null");
+    return false;
   }
 
   @Override public void onClick(View view) {
