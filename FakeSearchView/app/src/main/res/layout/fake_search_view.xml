@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:minWidth="240dp">
+
+  <EditText
     android:id="@+id/wrapped_search"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:inputType="text"
-    android:imeOptions="actionSearch"
-    android:minWidth="240dp"/>
+    android:imeOptions="actionSearch"/>
+
+  <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/dark_clear"/>
+
+</RelativeLayout>
