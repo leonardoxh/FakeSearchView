@@ -105,7 +105,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   @Override public void onTextChanged(CharSequence text, int i, int i2, int i3) {
     if (searchListener != null) {
-      searchListener.onSearch(text);
+      searchListener.onSearch(this, text);
     } else {
       Log.w(getClass().getName(), "SearchListener == null");
     }
@@ -115,7 +115,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   @Override public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
     if (searchListener != null) {
-      searchListener.onSearchHint(textView.getText());
+      searchListener.onSearchHint(this, textView.getText());
     } else {
       Log.w(getClass().getName(), "SearchListener == null");
     }
@@ -125,7 +125,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
   @Override public void onClick(View view) {
     wrappedEditText.setText("");
     if (clearSearchListener != null) {
-      clearSearchListener.onClearSearch();
+      clearSearchListener.onClearSearch(this);
     }
   }
 
@@ -139,15 +139,17 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
     /**
      * This method is called every time the EditText change it content
+     * @param searchView current view
      * @param constraint the current input data
      */
-    void onSearch(CharSequence constraint);
+    void onSearch(FakeSearchView searchView, CharSequence constraint);
 
     /**
      * This method is called when the user press the search button on the keyboard
+     * @param searchView current view
      * @param constraint the current input data
      */
-    void onSearchHint(CharSequence constraint);
+    void onSearchHint(FakeSearchView searchView, CharSequence constraint);
 
   }
 
@@ -159,8 +161,11 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
    */
   public interface OnClearSearchListener {
 
-    /** Called when clear button was clicked */
-    void onClearSearch();
+    /**
+     * Called when clear button was clicked
+     * @param searchView current view
+     */
+    void onClearSearch(FakeSearchView searchView);
 
   }
 
