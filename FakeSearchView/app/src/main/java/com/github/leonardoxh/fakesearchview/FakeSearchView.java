@@ -17,6 +17,7 @@ package com.github.leonardoxh.fakesearchview;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -50,7 +51,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     init(context);
   }
 
-  @TargetApi(21)
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   public FakeSearchView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
     init(context);
@@ -61,6 +62,11 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     init(context);
   }
 
+  /**
+   * Set the search listener to be used on this search
+   * @param searchListener the search listener to be used on this search
+   * @see OnSearchListener
+   */
   public void setOnSearchListener(OnSearchListener searchListener) {
     this.searchListener = searchListener;
   }
