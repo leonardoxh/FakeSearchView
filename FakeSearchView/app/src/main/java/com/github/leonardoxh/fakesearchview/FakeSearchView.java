@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -37,9 +38,12 @@ import android.widget.TextView;
  * @author Leonardo Rossetto
  */
 public class FakeSearchView extends FrameLayout implements TextWatcher,
-    TextView.OnEditorActionListener {
+    TextView.OnEditorActionListener, View.OnClickListener {
 
+  private Button clear;
+  private EditText wrappedEditText;
   private OnSearchListener searchListener;
+  private OnClearSearchListener clearSearchListener;
 
   public FakeSearchView(Context context, AttributeSet attrs) {
     super(context, attrs);
@@ -71,22 +75,35 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     this.searchListener = searchListener;
   }
 
+  public void setClearSearchListener(OnClearSearchListener clearSearchListener) {
+    this.clearSearchListener = clearSearchListener;
+  }
+
+  public EditText getWrappedEditText() {
+    return wrappedEditText;
+  }
+
+  public Button getClearButton() {
+    return clear;
+  }
+
   /**
    * Inflate the layout to this FrameLayout wrapper
    * @param context
    */
   private void init(Context context) {
     View view = LayoutInflater.from(context).inflate(R.layout.fake_search_view, this, true);
-    EditText wrappedEditText = (EditText) view.findViewById(R.id.wrapped_search);
+    wrappedEditText = (EditText) view.findViewById(R.id.wrapped_search);
     wrappedEditText.addTextChangedListener(this);
     wrappedEditText.setOnEditorActionListener(this);
+    clear = (Button) view.findViewById(R.id.clear);
+    clear.setOnClickListener(this);
   }
 
-  @Override
-  public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
+  @Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
 
-  @Override
-  public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+  @Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
     if (searchListener != null) {
       searchListener.onSearch(charSequence);
     } else {
@@ -94,8 +111,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     }
   }
 
-  @Override
-  public void afterTextChanged(Editable editable) { }
+  @Override public void afterTextChanged(Editable editable) { }
 
   @Override public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
     if (searchListener != null) {
@@ -104,6 +120,13 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
       Log.w(getClass().getName(), "SearchListener == null");
     }
     return true;
+  }
+
+  @Override public void onClick(View view) {
+    wrappedEditText.setText("");
+    if (clearSearchListener != null) {
+      clearSearchListener.onClearSearch();
+    }
   }
 
   /**
@@ -125,6 +148,12 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
      * @param constraint the current input data
      */
     void onSearchHint(CharSequence constraint);
+
+  }
+
+  public interface OnClearSearchListener {
+
+    void onClearSearch();
 
   }
 
