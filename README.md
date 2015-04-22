@@ -41,14 +41,14 @@ public class MainActivity extends Fragment implements FakeSearchView.OnSearchLis
     fakeSearchView.setOnSearchListener(this);
   }
 
-  @Override public void onSearch(@NotNull CharSequence constraint) {
+  @Override public void onSearch(@NotNull FakeSearchView fakeSearchView, @NotNull CharSequence constraint) {
     //The constraint variable here change every time user input data
     ((Filterable)listView.getAdapter()).getFilter().filter(constraint);
     /* Any adapter that implements a Filterable interface, or just extends the built in FakeSearchAdapter
        and implements the searchitem on your model to a custom filter logic */
   }
 
-  @Override public void onSearchHint(@NotNull CharSequence constraint) {
+  @Override public void onSearchHint(@NotNull FakeSearchView fakeSearchView, @NotNull CharSequence constraint) {
     //This is received when the user click in the search button on the keyboard
   }
 
@@ -58,7 +58,7 @@ public class MainActivity extends Fragment implements FakeSearchView.OnSearchLis
 This library is also available at maven central using gradle:
 ```groovy
 dependencies {
-  compile 'com.github.leonardoxh:fake-search-view:0.2'
+  compile 'com.github.leonardoxh:fake-search-view:0.3'
 }
 ```
 
