@@ -96,10 +96,10 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
   @Override public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
     if (searchListener != null) {
       searchListener.onSearchHint(textView.getText());
-    } else {
-      Log.w(getClass().getName(), "SearchListener == null");
+      return true;
     }
-    return true;
+    Log.w(getClass().getName(), "SearchListener == null");
+    return false;
   }
 
   /**
