@@ -38,6 +38,7 @@ import android.widget.TextView;
 public class FakeSearchView extends FrameLayout implements TextWatcher,
     TextView.OnEditorActionListener {
 
+  private EditText wrappedEditText;
   private OnSearchListener searchListener;
 
   public FakeSearchView(Context context, AttributeSet attrs) {
@@ -71,11 +72,18 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
   }
 
   /**
+   * @return the current text on the search
+   */
+  public CharSequence getSearchText() {
+    return wrappedEditText.getText();
+  }
+
+  /**
    * Inflate the layout to this FrameLayout wrapper
    * @param context for inflate views
    */
   private void init(Context context) {
-    EditText wrappedEditText = (EditText) LayoutInflater.from(context)
+    wrappedEditText = (EditText) LayoutInflater.from(context)
         .inflate(R.layout.fake_search_view, this, true);
     wrappedEditText.addTextChangedListener(this);
     wrappedEditText.setOnEditorActionListener(this);
