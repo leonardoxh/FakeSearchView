@@ -81,11 +81,9 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     wrappedEditText.setOnEditorActionListener(this);
   }
 
-  @Override
-  public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
+  @Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
 
-  @Override
-  public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+  @Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
     if (searchListener != null) {
       searchListener.onSearch(charSequence);
     } else {
@@ -93,8 +91,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
     }
   }
 
-  @Override
-  public void afterTextChanged(Editable editable) { }
+  @Override public void afterTextChanged(Editable editable) { }
 
   @Override public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
     if (searchListener != null) {
