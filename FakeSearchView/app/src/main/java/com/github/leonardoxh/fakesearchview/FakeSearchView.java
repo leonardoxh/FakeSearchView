@@ -86,9 +86,9 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
   @Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
     if (searchListener != null) {
       searchListener.onSearch(charSequence);
-    } else {
-      Log.w(getClass().getName(), "SearchListener == null");
+      return;
     }
+    Log.w(getClass().getName(), "SearchListener == null");
   }
 
   @Override public void afterTextChanged(Editable editable) { }
