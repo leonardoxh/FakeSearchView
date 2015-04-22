@@ -24,7 +24,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -73,11 +72,11 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   /**
    * Inflate the layout to this FrameLayout wrapper
-   * @param context
+   * @param context for inflate views
    */
   private void init(Context context) {
-    View view = LayoutInflater.from(context).inflate(R.layout.fake_search_view, this, true);
-    EditText wrappedEditText = (EditText) view.findViewById(R.id.wrapped_search);
+    EditText wrappedEditText = (EditText) LayoutInflater.from(context)
+        .inflate(R.layout.fake_search_view, this, true);
     wrappedEditText.addTextChangedListener(this);
     wrappedEditText.setOnEditorActionListener(this);
   }
