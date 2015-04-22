@@ -112,12 +112,14 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
     /**
      * This method is called every time the EditText change it content
+     * @param fakeSearchView the searchview
      * @param constraint the current input data
      */
     void onSearch(FakeSearchView fakeSearchView, CharSequence constraint);
 
     /**
      * This method is called when the user press the search button on the keyboard
+     * @param fakeSearchView the searchview
      * @param constraint the current input data
      */
     void onSearchHint(FakeSearchView fakeSearchView, CharSequence constraint);
