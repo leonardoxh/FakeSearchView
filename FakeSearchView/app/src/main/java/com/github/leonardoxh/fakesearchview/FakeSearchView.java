@@ -85,7 +85,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   @Override public void onTextChanged(CharSequence constraint, int start, int count, int after) {
     if (searchListener != null) {
-      searchListener.onSearch(constraint);
+      searchListener.onSearch(this, constraint);
       return;
     }
     Log.w(getClass().getName(), "SearchListener == null");
@@ -95,7 +95,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   @Override public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
     if (searchListener != null) {
-      searchListener.onSearchHint(textView.getText());
+      searchListener.onSearchHint(this, textView.getText());
       return true;
     }
     Log.w(getClass().getName(), "SearchListener == null");
@@ -114,13 +114,13 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
      * This method is called every time the EditText change it content
      * @param constraint the current input data
      */
-    void onSearch(CharSequence constraint);
+    void onSearch(FakeSearchView fakeSearchView, CharSequence constraint);
 
     /**
      * This method is called when the user press the search button on the keyboard
      * @param constraint the current input data
      */
-    void onSearchHint(CharSequence constraint);
+    void onSearchHint(FakeSearchView fakeSearchView, CharSequence constraint);
 
   }
 
