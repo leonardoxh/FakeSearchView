@@ -16,8 +16,8 @@
 package com.github.leonardoxh.fakesearchview.sample;
 
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -27,7 +27,7 @@ import butterknife.InjectView;
 
 import com.github.leonardoxh.fakesearchview.FakeSearchView;
 
-public class MainActivity extends ActionBarActivity implements FakeSearchView.OnSearchListener {
+public class MainActivity extends AppCompatActivity implements FakeSearchView.OnSearchListener {
 
   @InjectView(R.id.car_list) protected ListView cars;
 

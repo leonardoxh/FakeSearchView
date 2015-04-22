@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-  compile 'com.android.support:appcompat-v7:22.0.0'
+  compile 'com.android.support:appcompat-v7:22.1.0'
   compile 'com.jakewharton:butterknife:6.1.0'
   compile 'com.github.leonardoxh:fake-search-view:0.2'
 }
