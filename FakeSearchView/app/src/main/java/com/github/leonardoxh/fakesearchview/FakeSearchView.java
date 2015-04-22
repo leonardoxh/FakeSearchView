@@ -38,7 +38,8 @@ import android.widget.TextView;
  * @author Leonardo Rossetto
  */
 public class FakeSearchView extends FrameLayout implements TextWatcher,
-    TextView.OnEditorActionListener, View.OnClickListener {
+    TextView.OnEditorActionListener,
+    View.OnClickListener {
 
   private Button clear;
   private EditText wrappedEditText;
@@ -102,10 +103,9 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   @Override public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) { }
 
-  @Override public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
+  @Override public void onTextChanged(CharSequence text, int i, int i2, int i3) {
     if (searchListener != null) {
-      searchListener.onSearch(charSequence);
+      searchListener.onSearch(text);
     } else {
       Log.w(getClass().getName(), "SearchListener == null");
     }
@@ -151,8 +151,15 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   }
 
+  /**
+   * This interface is responsible to receive
+   * any clear button clicks to indicate the clear was pressed
+   *
+   * @author Leonardo Rossetto
+   */
   public interface OnClearSearchListener {
 
+    /** Called when clear button was clicked */
     void onClearSearch();
 
   }
