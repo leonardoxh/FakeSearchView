@@ -3,6 +3,8 @@ Search made easy!
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FakeSearchView-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1723)
 
+![](https://github.com/leonardoxh/FakeSearchView/blob/master/demo.gif)
+
 So I think the native Android SearchView it's a good option when perform a search, but it's not customizable and it's so burocratic!
 
 On my recent projects I use this class many and many times, so it's time to become a library.
