@@ -79,6 +79,24 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
   }
 
   /**
+   * Set the search placeholder (hint)
+   * @param placeholder the placeholder
+   * @see #setSearchPlaceholder(int)
+   */
+  public void setSearchPlaceholder(CharSequence placeholder) {
+    wrappedEditText.setHint(placeholder);
+  }
+
+  /**
+   * Set the search placeholder (hint)
+   * @param placeholder the placeholder
+   * @see #setSearchPlaceholder(CharSequence)
+   */
+  public void setSearchPlaceholder(int placeholder) {
+    wrappedEditText.setHint(placeholder);
+  }
+
+  /**
    * Inflate the layout to this FrameLayout wrapper
    * @param context for inflate views
    */
