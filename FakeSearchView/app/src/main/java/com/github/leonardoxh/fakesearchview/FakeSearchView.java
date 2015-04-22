@@ -72,6 +72,24 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
   }
 
   /**
+   * Sets the search text
+   * @param searchText the text to set on the search
+   * @see #setSearchText(int)
+   */
+  public void setSearchText(CharSequence searchText) {
+    wrappedEditText.setText(searchText);
+  }
+
+  /**
+   * Sets the search text using a resource
+   * @param searchTextRes the resource to set the text
+   * @see #setSearchText(CharSequence)
+   */
+  public void setSearchText(int searchTextRes) {
+    wrappedEditText.setText(searchTextRes);
+  }
+
+  /**
    * @return the current text on the search
    */
   public CharSequence getSearchText() {
@@ -89,11 +107,11 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
 
   /**
    * Set the search placeholder (hint)
-   * @param placeholder the placeholder
+   * @param placeholderRes the placeholder
    * @see #setSearchPlaceholder(CharSequence)
    */
-  public void setSearchPlaceholder(int placeholder) {
-    wrappedEditText.setHint(placeholder);
+  public void setSearchPlaceholder(int placeholderRes) {
+    wrappedEditText.setHint(placeholderRes);
   }
 
   /**
