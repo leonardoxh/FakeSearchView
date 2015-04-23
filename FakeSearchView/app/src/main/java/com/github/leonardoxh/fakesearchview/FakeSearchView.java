@@ -120,7 +120,7 @@ public class FakeSearchView extends FrameLayout implements TextWatcher,
    */
   protected void init(Context context) {
     LayoutInflater.from(context).inflate(R.layout.fake_search_view, this, true);
-    EditText wrappedEditText = (EditText) findViewById(R.id.wrapped_search);
+    wrappedEditText = (EditText) findViewById(R.id.wrapped_search);
     wrappedEditText.addTextChangedListener(this);
     wrappedEditText.setOnEditorActionListener(this);
   }
