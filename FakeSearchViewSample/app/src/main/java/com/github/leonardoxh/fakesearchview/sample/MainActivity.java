@@ -54,11 +54,11 @@ public class MainActivity extends AppCompatActivity implements FakeSearchView.On
     fakeSearchView.setOnSearchListener(this);
   }
 
-  @Override public void onSearch(CharSequence constraint) {
+  @Override public void onSearch(FakeSearchView fakeSearchView, CharSequence constraint) {
     ((CarAdapter)cars.getAdapter()).getFilter().filter(constraint);
   }
 
-  @Override public void onSearchHint(CharSequence constraint) {
+  @Override public void onSearchHint(FakeSearchView fakeSearchView, CharSequence constraint) {
     ((CarAdapter)cars.getAdapter()).getFilter().filter(constraint);
   }
 
